@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- This is the name shown on the browser tab -->
+    <title>Coastal Explorer</title>
+
+    <!-- Connects this HTML page to our external CSS file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Everything on the page is inside this container -->
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <h1>CALIFORNIA COAST EXPLORER</h1>
+        </header>
+
+        <!-- NAV MENU -->
+        <nav>
+            <a href="#">HOME</a>
+            <a href="#">PLACES</a>
+            <a href="#">FOOD</a>
+            <a href="#">EVENTS</a>
+            <a href="#">STAY</a>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <section class="hero swiper" aria-label="Coastal slideshow">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/hero.png" alt="Scenic view of the California coast">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/hero2.jpg" alt="Blue ocean beside coastal cliffs">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/hero3.jpg" alt="White cliffs along the Seven Sisters coastline">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/hero4.jpg" alt="Misty coastline at Palos Verdes">
+                </div>
+            </div>
+
+            <button class="swiper-button-prev" type="button" aria-label="Previous slide"></button>
+            <button class="swiper-button-next" type="button" aria-label="Next slide"></button>
+            <div class="swiper-pagination"></div>
+
+            <div class="hero-text" tabindex="0">
+                <h2>Explore the Coast</h2>
+
+                <p>
+                    Discover California’s coast, from sandy beaches and rugged
+                    cliffs to lively waterfront towns. Follow scenic trails,
+                    explore tide pools, or stop for a meal with an ocean view.
+                    Whether you have an afternoon or a whole weekend, find a
+                    new place to slow down and enjoy the shoreline.
+                </p>
+            </div>
+        </section>
+        <button id="hero-play" type="button">Pause</button>
+        <progress id="hero-timer" max="1" value="0"
+                  aria-label="Time until next slide"></progress>
+
+        <!-- MAIN CONTENT -->
+        <main>
+
+            <!-- LEFT PANEL -->
+            <section class="main-story">
+                <h2>A Day by the Bay</h2>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </p>
+
+                <!--<img src="images/beach.png"
+                     alt="Visitors enjoying a day at the beach">-->
+                
+                <figure>
+                    <img src="images/beach.png"
+                    alt="Visitors enjoying a day at the beach">
+                    <figcaption>Visitors enjoying a sunny afternoon at the beach.</figcaption>
+                </figure>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Integer vitae justo eget magna fermentum
+                    iaculis. Aenean sed adipiscing diam donec.
+                </p>
+
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
+            </section>
+
+            <!-- RIGHT PANEL -->
+            <aside class="tips">
+                <h2>Visitor Tips</h2>
+
+                <h3>Plan Ahead</h3>
+
+                <p>
+                    Check the weather before leaving and bring a light
+                    jacket. Coastal weather can change quickly.
+                </p>
+
+                <h3>Getting Around</h3>
+
+                <p>
+                    Walking and public transportation are easy ways
+                    to explore many popular areas.
+                </p>
+
+                <h3>Take Your Time</h3>
+
+                <p>
+                    Leave some extra time in your schedule to stop,
+                    explore, and enjoy the scenery.
+                </p>
+            </aside>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; 2026 Coastal Explorer</p>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script>
+        const timer = document.querySelector('#hero-timer');
+        const play = document.querySelector('#hero-play');
+
+        const slider = new Swiper('.hero', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+            navigation: {
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next'
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                bulletElement: 'button'
+            },
+            on: {
+                autoplayTimeLeft(slider, time, remaining) {
+                    timer.value = 1 - remaining;
+                }
+            }
+        });
+
+        play.onclick = () => {
+            if (slider.autoplay.running) {
+                slider.autoplay.stop();
+                play.textContent = 'Play';
+            } else {
+                slider.autoplay.start();
+                play.textContent = 'Pause';
+            }
+        };
+    </script>
+</body>
+</html>
