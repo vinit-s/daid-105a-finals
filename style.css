@@ -1,6 +1,4 @@
-/* --------------------
-   WHOLE PAGE
--------------------- */
+/* WHOLE PAGE */
 
 body {
     margin: 0;
@@ -16,9 +14,7 @@ body {
     background-color: white;
 }
 
-/* --------------------
-   HEADER
--------------------- */
+/* HEADER */
 
 header {
     text-align: center;
@@ -31,9 +27,7 @@ header h1 {
     font-size: 42px;
     letter-spacing: 3px;
 }
-/* -----------------------
-   NAV BAR - USE FLEXBOX
--------------------------*/
+/* NAV BAR - USE FLEXBOX */
 
 nav {
     display: flex;
@@ -49,29 +43,14 @@ nav a {
     text-decoration: none;
 }
 
-/* Change color when the mouse is over a link */
-nav a:hover {
+/* Highlight the current page, hover, and keyboard focus */
+nav a:hover,
+nav a:focus-visible,
+nav a[aria-current="page"] {
     background-color: #168caf;
 }
 
-/* Phones and small tablets: stack the nav links in rows of three */
-@media (max-width: 600px) {
-    nav {
-        flex-wrap: wrap;
-    }
-    nav a {
-        flex: 1 1 33%; /* three links per row */
-    }
-    /* Also adjust the header for small screens */
-    header h1 {
-    font-size: 28px;
-    letter-spacing: 1px;
-    }
-}
-
-/* --------------------
-   HERO SECTION
--------------------- */
+/* HERO SECTION */
 
 .hero {
     position: relative;
@@ -80,15 +59,9 @@ nav a:hover {
 }
 
 /* Give the slideshow the same height as its images */
-.hero .swiper-wrapper {
-    height: 320px;
-}
-
+.hero .swiper-wrapper,
 .hero img {
-    width: 100%;
     height: 320px;
-    object-fit: cover;
-    display: block;
 }
 
 /* Box that sits over the hero image */
@@ -120,12 +93,138 @@ nav a:hover {
     height: 100%;
 }
 
-/* Phones and small tablets: stack the hero text */
+/* MAIN CONTENT */
+
+main {
+    display: flex;
+    gap: 40px;
+    padding: 30px;
+}
+
+/* Left side is 2x larger */
+.main-story {
+    flex: 2;
+}
+
+/* Right side is smaller */
+.tips {
+    flex: 1;
+}
+
+/* Content headings */
+main h2 {
+    color: #168caf;
+    margin: 0 0 6px;
+}
+
+/* Subheadings */
+main h3 {
+    color: #e76f20;
+    margin: 0 0 3px;
+}
+
+main p {
+    margin: 0 0 16px;
+}
+
+.main-story figure {
+    margin: 15px 0;
+    border: 1cap solid #e8eef1;
+    padding: 5px;
+}
+
+.main-story figure img {
+    display: block;
+    width: 100%;
+}
+
+.main-story figcaption {
+    margin-top: 8px;
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Makes paragraphs easier to read */
+p {
+    line-height: 1.5;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #168caf;
+    color: white;
+    padding: 15px 25px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Shared layout for pages with cards */
+.page-content {
+    display: block;
+}
+
+.hero img,
+.page-banner,
+.cards img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+.page-banner {
+    height: 260px;
+}
+
+.cards {
+    display: grid;
+    gap: 24px;
+}
+
+.cards article {
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid #e8eef1;
+}
+
+.cards img {
+    height: 180px;
+    margin-bottom: 15px;
+}
+
+/* Date label above each event title */
+.cards time {
+    display: block;
+    width: 90px;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Phones: stack content and keep navigation easy to tap */
 @media (max-width: 600px) {
-    .hero .swiper-wrapper {
-        height: 220px;
+    nav {
+        flex-wrap: wrap;
     }
 
+    nav a {
+        flex: 1 1 33%;
+        box-sizing: border-box; /* include padding in the link width */
+    }
+
+    /* Also adjust the header for small screens */
+    header h1 {
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+
+    .hero .swiper-wrapper,
     .hero img {
         height: 220px;
     }
@@ -134,7 +233,6 @@ nav a:hover {
         position: static;
         width: auto;
         max-width: none;
-        padding: 15px;
     }
 
     .hero-text,
@@ -153,100 +251,45 @@ nav a:hover {
         top: 190px;
         bottom: auto;
     }
-}
-/* --------------------
-   MAIN CONTENT
--------------------- */
 
-main {
-    display: flex;
-    gap: 40px;
-    padding: 30px;
-}
-
-/* Left side is 2x larger */
-.main-story {
-    flex: 2;
-}
-
-/* Right side is smaller */
-.tips {
-    flex: 1;
-}
-
-/* Repeat the same heading style */
-main h2 {
-    color: #168caf;
-    margin-top: 0;
-}
-
-/* Make Heading3 Orange */
-main h3 {
-    color: #e76f20;
-}
-
-main h2,
-main h3 {
-    margin: 0 0 6px;
-}
-
-main h3 {
-    margin-bottom: 3px;
-}
-
-main p {
-    margin: 0 0 16px;
-}
-
-/* Image inside the article */
-.main-story img {
-    width: 100%;
-    margin: 15px 0;
-}
-
-.main-story figure {
-    margin: 15px 0;
-    border: 1cap solid #e8eef1;
-    padding: 5px;
-}
-
-.main-story figure img {
-    display: block;
-    margin: 0;
-}
-
-
-.main-story figcaption {
-    margin-top: 8px;
-    font-size: 14px;
-    font-style: italic;
-    text-align: center;
-}
-
-/* Makes paragraphs easier to read */
-p {
-    line-height: 1.5;
-}
-
-/* Phones and small tablets: stack the panels */
-@media (max-width: 600px) {
     main {
         flex-direction: column;
         gap: 20px;
         padding: 20px;
     }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .page-banner {
+        height: 180px;
+    }
 }
 
-/* --------------------
-   FOOTER
--------------------- */
+/* Tablets: two cards per row and more compact spacing */
+@media (min-width: 601px) and (max-width: 900px) {
+    header h1 {
+        font-size: 34px;
+    }
 
-footer {
-    background-color: #168caf;
-    color: white;
-    padding: 15px 25px;
+    main {
+        gap: 24px;
+        padding: 24px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .page-banner {
+        height: 220px;
+    }
 }
 
-footer p {
-    margin: 0;
+/* Desktops: three cards per row */
+@media (min-width: 901px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
